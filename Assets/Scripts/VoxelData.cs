@@ -11,11 +11,9 @@ public static class VoxelData
 
 	public static readonly int TextureAtlasSizeInBlocks = 4;
 	public static float NormalizedBlockTextureSize
-	{
-
-		get { return 1f / (float)TextureAtlasSizeInBlocks; }
-
-	}
+    {
+		get { return 1f / TextureAtlasSizeInBlocks; }
+    }
 
 	public static readonly Vector3[] voxelVerts = new Vector3[8] {
 
