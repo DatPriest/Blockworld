@@ -10,6 +10,11 @@
 
 # Visual Studio cache directory
 .vs/
+.vsconfig
+
+Plugins/
+Packages/
+Plugins.meta
 
 # Gradle cache directory
 .gradle/
