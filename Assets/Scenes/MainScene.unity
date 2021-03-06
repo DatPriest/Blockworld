@@ -199,8 +199,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.18502688, y: -0.04698698, z: 0.008771306, w: -0.98157036}
-  m_LocalPosition: {x: 0.86505246, y: 15.13363, z: -15.378214}
+  m_LocalRotation: {x: -0.19553101, y: -0.010135442, z: 0.0019425304, w: -0.9806433}
+  m_LocalPosition: {x: 6.7789154, y: 15.752059, z: -13.263994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -400,12 +400,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: biome
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a87a2af6cfbb444bafb155264f190cb, type: 2}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 963194228}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 19c5f75181fa419418c18f242fe9dc87, type: 2}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].isSolid
@@ -413,6 +421,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[3].isSolid
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].isSolid
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].isSolid
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
@@ -432,6 +448,14 @@ PrefabInstance:
       value: 'Grass '
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].blockName
+      value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].blockName
+      value: Dirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].topFaceTexture
       value: 0
       objectReference: {fileID: 0}
@@ -446,6 +470,14 @@ PrefabInstance:
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[3].topFaceTexture
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].topFaceTexture
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].topFaceTexture
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].backFaceTexture
@@ -480,6 +512,22 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].backFaceTexture
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].leftFaceTexture
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].backFaceTexture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].leftFaceTexture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].frontFaceTexture
       value: 0
       objectReference: {fileID: 0}
@@ -512,6 +560,22 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].frontFaceTexture
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].rightFaceTexture
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].frontFaceTexture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].rightFaceTexture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].bottomFaceTexture
       value: 9
       objectReference: {fileID: 0}
@@ -525,6 +589,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[3].bottomFaceTexture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[4].bottomFaceTexture
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[5].bottomFaceTexture
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2113715472814573825, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
