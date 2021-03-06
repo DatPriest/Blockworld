@@ -4,12 +4,176 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
+    public int seed;
+    public BiomeAttributes biome;
+
+    public Transform player;
+    public Vector3 spawnPosition;
+
     public Material material;
     public BlockType[] blockTypes;
 
+    Chunk[,] chunkList = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
+    List<ChunkCoord> activeChunks = new List<ChunkCoord>();
+    ChunkCoord playerChunkCoord;
+    ChunkCoord playerLastChunkCoord;
+
     private void Start()
     {
-        Chunk newChunk = new Chunk(this);
+        Random.InitState(seed);
+
+        spawnPosition = new Vector3((VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth) / 2f, VoxelData.ChunkHeight + 2f, (VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth) / 2);
+        GenerateWorld();
+        playerLastChunkCoord = GetChunkCoordFromVector3(player.position);
+    }
+
+    private void Update()
+    {
+        playerChunkCoord = GetChunkCoordFromVector3(player.position);
+        if (!playerChunkCoord.Equals(playerLastChunkCoord))
+            CheckViewDistance();
+    }
+
+    void GenerateWorld()
+    {
+        for (int x = (VoxelData.WorldSizeInChunks / 2) - VoxelData.ViewDistanceInChunks; x < (VoxelData.WorldSizeInChunks / 2) + VoxelData.ViewDistanceInChunks; x++)
+        {
+            for (int z = (VoxelData.WorldSizeInChunks / 2) - VoxelData.ViewDistanceInChunks; z < (VoxelData.WorldSizeInChunks / 2) + VoxelData.ViewDistanceInChunks; z++)
+            {
+                CreateNewChunk(x, z);
+            }
+        }
+
+        player.position = spawnPosition;
+    }
+
+    ChunkCoord GetChunkCoordFromVector3(Vector3 pos)
+    {
+        int x = Mathf.FloorToInt(pos.x / VoxelData.ChunkWidth);
+        int z = Mathf.FloorToInt(pos.z / VoxelData.ChunkWidth);
+        return new ChunkCoord(x, z);
+    }
+
+    void CheckViewDistance()
+    {
+        ChunkCoord coord = GetChunkCoordFromVector3(player.position);
+        List<ChunkCoord> previouslyActiveChunks = new List<ChunkCoord>(activeChunks);
+
+        for (int x = coord.x - VoxelData.ViewDistanceInChunks; x < coord.x + VoxelData.ViewDistanceInChunks; x++)
+        {
+            for (int z = coord.z - VoxelData.ViewDistanceInChunks; z < coord.z + VoxelData.ViewDistanceInChunks; z++)
+            {
+                if (IsChunkInWorld(new ChunkCoord(x, z)))
+                {
+                    if (chunkList[x, z] == null)
+                    {
+                        CreateNewChunk(x, z);
+                    } else if (!chunkList[x, z].isActive)
+                    {
+                        chunkList[x, z].isActive = true;
+                        activeChunks.Add(new ChunkCoord(x, z));
+                    }
+                }
+
+                for (int i = 0; i < previouslyActiveChunks.Count; i++)
+                {
+                    if (previouslyActiveChunks[i].Equals(new ChunkCoord(x, z)))
+                    {
+                        previouslyActiveChunks.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
+        foreach(ChunkCoord c in previouslyActiveChunks)
+        {
+            chunkList[c.x, c.z].isActive = false;
+            //activeChunks.RemoveAt(c);
+        }
+    }
+
+    public byte GetVoxel(Vector3 pos )
+    {
+        int yPos = Mathf.FloorToInt(pos.y);
+
+
+        /* IMMUTABLE PASS */
+
+        // If outside of world return air.
+        if (!IsVoxelInWorld(pos))
+            return 0;
+
+        // if bottom block of chunk return bedrock
+        if (yPos == 0)
+        {
+            return 1;
+        }
+
+        /* BASIC TERRAIN PASS */
+
+        int terrainHeight = Mathf.FloorToInt(biome.terrainHeight* Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biome.terrainScale) ) + biome.solidGroundHeight;
+        byte voxelValue = 0;
+
+        if (yPos == terrainHeight)
+        {
+            voxelValue =  3;
+        }
+        else if (yPos < terrainHeight && yPos > terrainHeight - 4)
+        {
+            voxelValue =  5;
+        }
+        else if (yPos > terrainHeight)
+        {
+            return 0;
+        }
+        else
+        {
+            voxelValue = 2;
+        }
+
+        /* SECOND PASS */
+
+        if (voxelValue == 2)
+        {
+            foreach(Lode lode in biome.lodes)
+            {
+                if (yPos > lode.minHeight && yPos < lode.maxHeight)
+                {
+                    if (Noise.Get3DPerlin(pos, lode.noiseOffset, lode.scale, lode.threshold))
+                    {
+                        voxelValue = lode.blockId;
+                    }
+                }
+            }
+        }
+        return voxelValue;
+
+    }
+
+    void CreateNewChunk(int x, int z) 
+    { 
+        chunkList[x, z] = new Chunk(new ChunkCoord(x, z), this);
+        activeChunks.Add(new ChunkCoord(x, z));
+    }
+
+    bool IsChunkInWorld(ChunkCoord coord)
+    {
+        if (coord.x > 0 && coord.x < VoxelData.WorldSizeInChunks - 1 && coord.z > 0 && coord.z < VoxelData.WorldSizeInChunks - 1)
+            return 
+                true;
+        else 
+            return 
+                false;
+    }
+
+    bool IsVoxelInWorld(Vector3 pos)
+    {
+        if (pos.x >= 0 && pos.x < VoxelData.WorldSizeInVoxels && pos.y >= 0 && pos.y < VoxelData.ChunkHeight && pos.z >= 0 && pos.z < VoxelData.WorldSizeInVoxels)
+            return 
+                true;
+        else 
+            return 
+                false;
     }
 }
 
