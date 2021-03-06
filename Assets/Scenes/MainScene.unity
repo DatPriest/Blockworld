@@ -496,87 +496,127 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[0].isSolid
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].isSolid
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].blockName
-      value: Bedrock
+      value: Air
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[1].blockName
-      value: Stone
+      value: Bedrock
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].blockName
+      value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].blockName
       value: 'Grass '
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].topFaceTexture
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
-      propertyPath: blockTypes.Array.data[1].topFaceTexture
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[1].topFaceTexture
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].topFaceTexture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].topFaceTexture
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].backFaceTexture
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].leftFaceTexture
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[1].backFaceTexture
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[1].leftFaceTexture
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].backFaceTexture
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].leftFaceTexture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].backFaceTexture
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].leftFaceTexture
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].frontFaceTexture
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].rightFaceTexture
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[1].frontFaceTexture
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[1].rightFaceTexture
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].frontFaceTexture
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].rightFaceTexture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].frontFaceTexture
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].rightFaceTexture
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[0].bottomFaceTexture
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
-      propertyPath: blockTypes.Array.data[1].bottomFaceTexture
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[1].bottomFaceTexture
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
       propertyPath: blockTypes.Array.data[2].bottomFaceTexture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477001126, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}
+      propertyPath: blockTypes.Array.data[3].bottomFaceTexture
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2113715472814573825, guid: c772a1ded3e6dc14b9a00e588045b6d4, type: 3}

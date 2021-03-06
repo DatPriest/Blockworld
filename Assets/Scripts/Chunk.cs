@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chunk : MonoBehaviour
+public class Chunk
 {
 
-	public MeshRenderer meshRenderer;
-	public MeshFilter meshFilter;
+	GameObject chunkObject;
+	MeshRenderer meshRenderer;
+	MeshFilter meshFilter;
 
 	int vertexIndex = 0;
 	List<Vector3> vertices = new List<Vector3>();
@@ -16,10 +17,17 @@ public class Chunk : MonoBehaviour
 	byte[,,] voxelMap = new byte[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
 
 	World world;
-	// Start is called before the first frame update
-	void Start()
-	{
-		world = GameObject.Find("World").GetComponent<World>();
+
+	public Chunk (World _world)
+    {
+		world = _world;
+		chunkObject = new GameObject();
+		meshFilter = chunkObject.AddComponent<MeshFilter>();
+		meshRenderer = chunkObject.AddComponent<MeshRenderer>();
+
+		chunkObject.transform.SetParent(world.transform);
+		meshRenderer.material = world.material;
+
 		PopulateVoxelMap();
 		CreateMeshData();
 		CreateMesh();
@@ -85,25 +93,22 @@ public class Chunk : MonoBehaviour
 				{
 					if (y < 1)
                     {
-						voxelMap[x, y, z] = 0;
+						voxelMap[x, y, z] = 1;
 
 					} else if ( y == VoxelData.ChunkHeight - 1)
                     {
-						voxelMap[x, y, z] = 2;
+						voxelMap[x, y, z] = 3;
                     } else
                     {
-						voxelMap[x, y, z] = 1;
+						voxelMap[x, y, z] = 2;
 					}
-
 				}
 			}
 		}
-
 	}
 
 	void CreateMesh()
 	{
-
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertices.ToArray();
 		mesh.triangles = triangles.ToArray();
@@ -112,7 +117,6 @@ public class Chunk : MonoBehaviour
 		mesh.RecalculateNormals();
 
 		meshFilter.mesh = mesh;
-
 	}
 
 	void AddTexture(int textureId)
@@ -129,6 +133,5 @@ public class Chunk : MonoBehaviour
 		uvs.Add(new Vector2(x, y + VoxelData.NormalizedBlockTextureSize));
 		uvs.Add(new Vector2(x + VoxelData.NormalizedBlockTextureSize, y));
 		uvs.Add(new Vector2(x + VoxelData.NormalizedBlockTextureSize, y + VoxelData.NormalizedBlockTextureSize));
-
 	}
 }
