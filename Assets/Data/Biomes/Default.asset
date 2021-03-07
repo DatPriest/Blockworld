@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4644399cd03257049bf1e3322db23d1e, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  biomeName: Defaul
+  biomeName: Default
   solidGroundHeight: 42
   terrainHeight: 42
-  terrainScale: 0.25
+  terrainScale: 0.2
   lodes:
   - nodeName: Dirt
     blockId: 5
