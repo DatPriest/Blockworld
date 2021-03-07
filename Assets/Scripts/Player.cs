@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
@@ -26,10 +28,27 @@ public class Player : MonoBehaviour
     private float verticalMomentum = 0;
     private bool jumpRequest;
 
+    public Transform highlightBlock;
+    public Transform placeBlock;
+    public float checkIncrement = 0.1f;
+    public float reach = 8f;
+
+    public Text selectedBlockText;
+    public byte selectedBlockIndex;
+
+
+
+    public PlayerStats stats;
+
     private void Start()
     {
         cam = GameObject.Find("Main Camera").transform;
         world = GameObject.Find("World").GetComponent<World>();
+        stats = new PlayerStats(new Health(0, 0), new Mana(0, 0), new Level(1, 0));
+
+        Cursor.lockState = CursorLockMode.Locked;
+        selectedBlockText.text = world.blockTypes[selectedBlockIndex].blockName + " block selected";
+
     }
 
     private void FixedUpdate()
@@ -39,13 +58,15 @@ public class Player : MonoBehaviour
             Jump();
 
         transform.Rotate(Vector3.up * mouseHorizontal);
-        cam.Rotate(Vector3.right * -mouseVertical);
         transform.Translate(velocity, Space.World);
+        cam.Rotate(Vector3.right * -mouseVertical);
+
     }
 
     private void Update()
     {
         GetPlayerInputs();
+        placeCursorBlocks();
     }
 
     private void CalculateVelocity()
@@ -97,6 +118,65 @@ public class Player : MonoBehaviour
 
         if (isGrounded && Input.GetButtonDown("Jump"))
             jumpRequest = true;
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+        if (scroll != 0)
+        {
+            if (scroll > 0)
+                selectedBlockIndex++;
+            else
+                selectedBlockIndex--;
+
+            if (selectedBlockIndex > (byte)(world.blockTypes.Length - 1))
+                selectedBlockIndex = 1;
+            if (selectedBlockIndex < 1)
+                selectedBlockIndex = (byte)(world.blockTypes.Length - 1);
+
+            selectedBlockText.text = world.blockTypes[selectedBlockIndex].blockName + " block selected";
+        }
+
+        if (highlightBlock.gameObject.activeSelf)
+        {
+            // Destroy Block
+            if (Input.GetMouseButtonDown(0))
+                world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position, 0);
+
+            // Place Block
+            if (Input.GetMouseButtonDown(1))
+                world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position, selectedBlockIndex);
+        }
+
+    }
+
+    private void placeCursorBlocks ()
+    {
+        float step = checkIncrement;
+        Vector3 lastPos = new Vector3();
+
+        while(step < reach)
+        {
+            Vector3 pos = cam.position + (cam.forward * step);
+
+            if (world.CheckForVoxel(pos))
+            {
+                highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+                placeBlock.position = lastPos;
+
+                highlightBlock.gameObject.SetActive(true);
+                placeBlock.gameObject.SetActive(true);
+
+                return;
+            }
+
+            lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+
+            step += checkIncrement;
+        }
+
+        highlightBlock.gameObject.SetActive(false);
+        placeBlock.gameObject.SetActive(false);
+
 
     }
 
@@ -194,4 +274,55 @@ public class Player : MonoBehaviour
         }
     }
 
+}
+
+public class PlayerStats
+{
+    private Health health;
+    private Mana mana;
+    private Level level;
+
+    public PlayerStats (Health _health, Mana _mana, Level _level)
+    {
+        health = _health;
+        mana = _mana;
+        level = _level;
+    }
+}
+
+public class Level
+{
+    int level;
+    float experience;
+    public Level (int _level, float _experience)
+    {
+        level = _level;
+        experience = _experience;
+    }
+}
+
+public class Mana
+{
+    float mpPerSecond;
+    float maxMP;
+    float currentMP;
+
+    public Mana(float _maxMp, float _mpPerSecond)
+    {
+        mpPerSecond = _mpPerSecond;
+        maxMP = _maxMp;
+    }
+}
+
+public class Health
+{
+    float hpPerSecond;
+    float maxHP;
+    float currentHP;
+
+    public Health(float _maxHp, float _hpPerSecond)
+    {
+        hpPerSecond = _hpPerSecond;
+        maxHP = _maxHp;
+    }
 }

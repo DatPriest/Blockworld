@@ -13,7 +13,7 @@ public class World : MonoBehaviour
     public Material material;
     public BlockType[] blockTypes;
 
-    Chunk[,] chunkList = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
+    public Chunk[,] chunkList = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
     public int countActiveChunks;
 
@@ -91,6 +91,13 @@ public class World : MonoBehaviour
         int x = Mathf.FloorToInt(pos.x / VoxelData.ChunkWidth);
         int z = Mathf.FloorToInt(pos.z / VoxelData.ChunkWidth);
         return new ChunkCoord(x, z);
+    }
+
+    public Chunk GetChunkFromVector3( Vector3 pos)
+    {
+        int x = Mathf.FloorToInt(pos.x / VoxelData.ChunkWidth);
+        int z = Mathf.FloorToInt(pos.z / VoxelData.ChunkWidth);
+        return chunkList[x, z];
     }
 
     void CheckViewDistance()
