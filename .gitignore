@@ -15,6 +15,7 @@
 Plugins/
 Packages/
 Plugins.meta
+UIElementsSchema/
 
 # Gradle cache directory
 .gradle/

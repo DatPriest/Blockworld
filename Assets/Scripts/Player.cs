@@ -57,9 +57,7 @@ public class Player : MonoBehaviour
         if (jumpRequest)
             Jump();
 
-        transform.Rotate(Vector3.up * mouseHorizontal);
         transform.Translate(velocity, Space.World);
-        cam.Rotate(Vector3.right * -mouseVertical);
 
     }
 
@@ -67,6 +65,10 @@ public class Player : MonoBehaviour
     {
         GetPlayerInputs();
         placeCursorBlocks();
+        transform.Rotate(Vector3.up * mouseHorizontal);
+        cam.Rotate(Vector3.right * -mouseVertical);
+
+
     }
 
     private void CalculateVelocity()
