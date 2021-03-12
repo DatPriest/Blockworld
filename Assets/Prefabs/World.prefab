@@ -43,18 +43,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff5c5942004d8c4185475b65fbb9ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  seed: 0
+  biome: {fileID: 11400000, guid: 9a87a2af6cfbb444bafb155264f190cb, type: 2}
+  player: {fileID: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
+  material: {fileID: 2100000, guid: 19c5f75181fa419418c18f242fe9dc87, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 7abfca54c0ec821459abf3a46408a868, type: 2}
   blockTypes:
-  - blockName: 'Grass '
-    isSolid: 1
-    backFaceTexture: 2
-    frontFaceTexture: 2
-    topFaceTexture: 7
-    bottomFaceTexture: 1
-    leftFaceTexture: 2
-    rightFaceTexture: 2
+  - blockName: Air
+    isSolid: 0
+    isTransparent: 1
+    icon: {fileID: 0}
+    backFaceTexture: 0
+    frontFaceTexture: 0
+    topFaceTexture: 0
+    bottomFaceTexture: 9
+    leftFaceTexture: 0
+    rightFaceTexture: 9
   - blockName: Bedrock
     isSolid: 1
+    isTransparent: 0
+    icon: {fileID: 6181873364862223445, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
     backFaceTexture: 9
     frontFaceTexture: 9
     topFaceTexture: 9
@@ -63,9 +72,103 @@ MonoBehaviour:
     rightFaceTexture: 9
   - blockName: Stone
     isSolid: 1
+    isTransparent: 0
+    icon: {fileID: 5679390536090785944, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
     backFaceTexture: 0
     frontFaceTexture: 0
     topFaceTexture: 0
     bottomFaceTexture: 0
     leftFaceTexture: 0
     rightFaceTexture: 0
+  - blockName: 'Grass '
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: 5392753449730437660, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 2
+    frontFaceTexture: 2
+    topFaceTexture: 7
+    bottomFaceTexture: 1
+    leftFaceTexture: 2
+    rightFaceTexture: 2
+  - blockName: Sand
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: -9138616440249935319, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 10
+    frontFaceTexture: 10
+    topFaceTexture: 10
+    bottomFaceTexture: 10
+    leftFaceTexture: 10
+    rightFaceTexture: 10
+  - blockName: Dirt
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: -6943373833598557, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 1
+    frontFaceTexture: 1
+    topFaceTexture: 1
+    bottomFaceTexture: 1
+    leftFaceTexture: 1
+    rightFaceTexture: 1
+  - blockName: Oakwood
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: 448961105294916356, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 5
+    frontFaceTexture: 5
+    topFaceTexture: 6
+    bottomFaceTexture: 6
+    leftFaceTexture: 5
+    rightFaceTexture: 5
+  - blockName: OakwoodPlanks
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: -1501523072523359806, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 4
+    frontFaceTexture: 4
+    topFaceTexture: 4
+    bottomFaceTexture: 4
+    leftFaceTexture: 4
+    rightFaceTexture: 4
+  - blockName: Bricks
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: -4219558403781695398, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 11
+    frontFaceTexture: 11
+    topFaceTexture: 11
+    bottomFaceTexture: 11
+    leftFaceTexture: 11
+    rightFaceTexture: 11
+  - blockName: Cobblestone
+    isSolid: 1
+    isTransparent: 0
+    icon: {fileID: 1159639000735656762, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 8
+    frontFaceTexture: 8
+    topFaceTexture: 8
+    bottomFaceTexture: 8
+    leftFaceTexture: 8
+    rightFaceTexture: 8
+  - blockName: Glass
+    isSolid: 1
+    isTransparent: 1
+    icon: {fileID: -7538633921802359561, guid: 4ab5439766a2ba642aedd7e86b0b944b, type: 3}
+    backFaceTexture: 3
+    frontFaceTexture: 3
+    topFaceTexture: 3
+    bottomFaceTexture: 3
+    leftFaceTexture: 3
+    rightFaceTexture: 3
+  - blockName: Leaves
+    isSolid: 1
+    isTransparent: 1
+    icon: {fileID: 0}
+    backFaceTexture: 16
+    frontFaceTexture: 16
+    topFaceTexture: 16
+    bottomFaceTexture: 16
+    leftFaceTexture: 16
+    rightFaceTexture: 16
+  countActiveChunks: 0
+  debugScreen: {fileID: 0}
