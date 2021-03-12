@@ -35,16 +35,13 @@ public class Player : MonoBehaviour
 
     public byte selectedBlockIndex = 1;
 
-
     public PlayerStats stats;
-    public Inventory inventory;
 
     private void Start()
     {
         cam = GameObject.Find("Main Camera").transform;
         world = GameObject.Find("World").GetComponent<World>();
         stats = new PlayerStats(new Health(0, 0), new Mana(0, 0), new Level(1, 0));
-        inventory = new Inventory();
 
         Cursor.lockState = CursorLockMode.Locked;
 
