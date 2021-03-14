@@ -14,11 +14,9 @@ public class ToolBar : MonoBehaviour
         byte indexer = 1;
         foreach(UIItemSlot s in slots)
         {
-            ItemStack stack = new ItemStack(indexer, Random.Range(2, 65))       ;
+            ItemStack stack = new ItemStack(5, Random.Range(2, 65));
             ItemSlot slot = new ItemSlot(slots[indexer - 1], stack);
             indexer++;
-
-
         }
 
     }

@@ -141,9 +141,14 @@ public class Player : MonoBehaviour
             // Place Block
             if (Input.GetMouseButtonDown(1))
             {
-                if (toolBar.slots[toolBar.slotIndex].HasItem){
-                    world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position, toolBar.slots[toolBar.slotIndex].itemSlot.stack.id);
-                    toolBar.slots[toolBar.slotIndex].itemSlot.Take(1);
+                if (toolBar.slots[toolBar.slotIndex].HasItem) {
+
+                    if (placeBlock.position != new Vector3(0.0f, 0.0f, 0.0f))
+                    {
+                        world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position, toolBar.slots[toolBar.slotIndex].itemSlot.stack.id);
+                        toolBar.slots[toolBar.slotIndex].itemSlot.Take(1);
+                    }
+
                 }
 
             }
@@ -174,7 +179,7 @@ public class Player : MonoBehaviour
             lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
 
             step += checkIncrement;
-        }
+        }        
 
         highlightBlock.gameObject.SetActive(false);
         placeBlock.gameObject.SetActive(false);

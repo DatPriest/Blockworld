@@ -174,6 +174,7 @@ public class Chunk {
 
         voxelMap[xCheck, yCheck, zCheck] = newID;
 
+
         UpdateSurroundingVoxels(xCheck, yCheck, zCheck);
 
         _updateChunk();

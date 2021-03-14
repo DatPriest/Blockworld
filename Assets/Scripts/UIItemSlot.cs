@@ -17,7 +17,7 @@ public class UIItemSlot : MonoBehaviour
     {
         world = GameObject.Find("World").GetComponent<World>();
     }
-
+ 
     public bool HasItem
     {
         get
@@ -79,6 +79,8 @@ public class ItemSlot
     public ItemStack stack = null;
     private UIItemSlot uiItemSlot = null;
 
+    public bool isCreative;
+
     public ItemSlot (UIItemSlot _uiItemSlot)
     {
         stack = null;
@@ -129,8 +131,19 @@ public class ItemSlot
             EmptySlot();
             return amt;
         }
+    }
 
+    public ItemStack TakeAll()
+    {
+        ItemStack handOver = new ItemStack(stack.id, stack.amount);
+        EmptySlot();
+        return handOver;
+    }
 
+    public void InsertStack (ItemStack _stack)
+    {
+        stack = _stack;
+        uiItemSlot.UpdateSlot();
     }
 
     public bool HasItem
