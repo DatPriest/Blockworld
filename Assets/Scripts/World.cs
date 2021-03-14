@@ -30,6 +30,8 @@ public class World : MonoBehaviour {
 
     Queue<Queue<VoxelMod>> modifications = new Queue<Queue<VoxelMod>>();
 
+    private bool _inUI = false;
+
     public GameObject debugScreen;
 
     private void Start() {
@@ -247,6 +249,14 @@ public class World : MonoBehaviour {
 
     }
 
+    public bool inUI
+    {
+        get { return _inUI; }
+        set
+        {
+            _inUI = value;
+        }
+    }
 
     public byte GetVoxel (Vector3 pos) {
 
