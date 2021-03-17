@@ -69,7 +69,8 @@ public class UIItemSlot : MonoBehaviour
     {
         if (isLinked)
         {
-            itemSlot.UnLinkUISlot();
+            if (itemSlot != null)
+                itemSlot.UnLinkUISlot();
         }
     }
 }

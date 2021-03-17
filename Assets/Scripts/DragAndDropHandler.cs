@@ -112,7 +112,7 @@ public class DragAndDropHandler : MonoBehaviour
 
         foreach (RaycastResult result in results)
         {
-            if (result.gameObject.tag == "UIItemSlot")
+            if (result.gameObject.CompareTag("UIItemSlot"))
                 return result.gameObject.GetComponent<UIItemSlot>();
         }
 
